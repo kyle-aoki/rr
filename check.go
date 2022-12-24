@@ -42,8 +42,9 @@ func printCustomStacktrace(err error) {
 	dashedline(err)
 	for i := 0; i < len(ffps); i++ {
 		spaces := strings.Repeat(" ", maxFileNameLength-len(ffps[i].filename))
-		fmt.Printf("%s%s :: %s", ffps[i].filename, spaces, ffps[i].fn)
+		fmt.Printf("%s%s :: %s\n", ffps[i].filename, spaces, ffps[i].fn)
 	}
+	fmt.Println()
 }
 
 func hasDebugFlag() bool {
@@ -74,7 +75,7 @@ func fileFuncPairSliceFromStacktrace(stacktrace string) []fileFuncPair {
 	for i := 1; i < len(lines)-1; i += 2 {
 		ffs = append(ffs, toFileFuncPair(lines[i], lines[i+1]))
 	}
-	ffs = ffs[4:] // omit stackframes from this file
+	ffs = ffs[5:] // omit stackframes from this file
 	return ffs
 }
 
