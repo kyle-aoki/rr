@@ -15,7 +15,7 @@ type fileFuncPair struct {
 	fn       string
 }
 
-func Is(err error) {
+func Check(err error) {
 	defer customRecover(err)
 	if err != nil {
 		panic(err)
